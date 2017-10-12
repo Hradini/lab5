@@ -14,20 +14,27 @@ int mean(int arr[], int n){
 	}return sum/n;
 }
 int median(int arr[], int n){
-	if( n%2 =0){
+	if( n%2 == 0){
 		return (arr[n/2]+ arr[(n/2) -1])/2;
 	}else return arr[n/2];
 }
 
 int mode(int arr[], int n){
-	int f[n];
-	for (i=0;i<n;++i){
-		for(j=0;j<n; ++j){
-			if(arr[i] = arr[j])
-			f[i] += 1;
-		}
-	}
-	
+	int c, max, mode,i;
+	max=0;
+	for(i=0;i<n-1;++i){
+		
+		if (arr[i+1] == arr[i]){
+			c++;
+			if(c>max){
+			max = c;
+			mode = arr[i];
+			}
+		}else
+		c=0;
+		} 
+
+	return mode;
 }
 int main() {
 	int n,i,j;
@@ -47,5 +54,15 @@ int main() {
 			}
 		}
 	}
+	for (i=0; i<n;++i){
+		cout << arr[i] <<" ";
+	}
+	cout << endl;
+	smallest(arr);
+	largest(arr);
+	cout << "mean is" << mean(arr, n);
+	cout << "median is" << median(arr,n);
+	cout << "mode is" <<mode(arr,n);
+	
 	return 0;
 }
